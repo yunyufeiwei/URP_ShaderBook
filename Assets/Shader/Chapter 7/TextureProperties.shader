@@ -11,7 +11,7 @@ Shader "URP/ShaderBook/Chapter 7/TextureProperties"
 
         Pass
         {
-            Tags{"LihgtMode" = "UniversalForward"}
+            Tags{"LightMode" = "UniversalForward"}
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag

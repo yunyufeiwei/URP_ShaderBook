@@ -14,6 +14,7 @@ Shader "URP/ShaderBook/Chapter 7/RampTexture"
 
         Pass
         {
+            Tags{"LightMode" = "UniversalForward"}
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag

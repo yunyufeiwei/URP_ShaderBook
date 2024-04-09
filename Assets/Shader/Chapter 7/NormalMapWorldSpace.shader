@@ -16,7 +16,7 @@ Shader "URP/ShaderBook/Chapter 7/NormalMapWorldSpace"
 
         Pass
         {
-            Tags{"LihgtMode" = "UniversalForward"}
+            Tags{"LightMode" = "UniversalForward"}
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag

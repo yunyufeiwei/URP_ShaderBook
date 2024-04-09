@@ -11,7 +11,7 @@ Shader "URP/ShaderBook/Chapter 6/HalfLambertMat"
     
             Pass
             {
-                Tags{"LihgtMode" = "UniversalForward"}
+                Tags{"LightMode" = "UniversalForward"}
                 HLSLPROGRAM
                 #pragma vertex vert
                 #pragma fragment frag

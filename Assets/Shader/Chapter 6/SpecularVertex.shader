@@ -13,7 +13,7 @@ Shader "URP/ShaderBook/Chapter 6/SpecularVertex"
     
         Pass
         {
-            Tags{"LihgtMode" = "UniversalForward"}
+            Tags{"LightMode" = "UniversalForward"}
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag

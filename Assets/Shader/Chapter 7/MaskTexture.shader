@@ -1,4 +1,4 @@
-Shader "Unlit/MaskTexture"
+Shader "URP/ShaderBook/Chapter 7/MaskTexture"
 {
     Properties
     {
@@ -19,7 +19,7 @@ Shader "Unlit/MaskTexture"
 
         Pass
         {
-            Tags{"LihgtMode" = "UniversalForward"}
+            Tags{"LightMode" = "UniversalForward"}
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag

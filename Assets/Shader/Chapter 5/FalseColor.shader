@@ -15,7 +15,7 @@ Shader "URP/ShaderBook/Chapter 5/FalseColor"
 
         Pass
         {
-            Tags{"LihgtMode" = "UniversalForward"}
+            Tags{"LightMode" = "UniversalForward"}
             
             HLSLPROGRAM
             #pragma vertex vert

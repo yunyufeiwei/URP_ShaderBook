@@ -13,7 +13,7 @@ Shader "URP/ShaderBook/Chapter 6/BlinnPhongUseUniversal"
     
         Pass
         {
-            Tags{"LihgtMode" = "UniversalForward"}
+            Tags{"LightMode" = "UniversalForward"}
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
