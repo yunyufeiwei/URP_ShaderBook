@@ -15,9 +15,6 @@ Shader "URP/ShaderBook/Chapter 6/HalfLambertMat"
                 HLSLPROGRAM
                 #pragma vertex vert
                 #pragma fragment frag
-                
-                #pragma vertex vert
-                #pragma fragment frag
     
                 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
                 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"

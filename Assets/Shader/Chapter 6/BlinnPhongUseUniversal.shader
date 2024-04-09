@@ -68,7 +68,7 @@ Shader "URP/ShaderBook/Chapter 6/BlinnPhongUseUniversal"
                 half3 worldViewDir = normalize(i.viewDirWS);
 
                 half4 diffuse = lightColor * _DiffuseColor * saturate(dot(worldLightDir,worldNormal));
-                half4 specular = half4(LightingSpecular(lightColor,worldLightDir,worldNormal,worldViewDir,_SpecularColor,_SpecularPower),1.0);
+                half4 specular = half4(LightingSpecular(lightColor.rgb,worldLightDir,worldNormal,worldViewDir,_SpecularColor,_SpecularPower),1.0);
 
                 FinalColor = diffuse + specular;
                 
