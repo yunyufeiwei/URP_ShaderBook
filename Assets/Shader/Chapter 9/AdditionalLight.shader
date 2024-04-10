@@ -1,33 +1,23 @@
-Shader "URP/ShaderBook/Chapter 8/AlphaBlendBothSided"
+Shader "URP/ShaderBook/Chapter 9/AdditionalLight"
 {
     Properties
     {
-        _Color("Color",color) = (1,1,1,1)
-        _BaseMap("BaseMap",2D) = "white"{}
-        _AlphaScale("AlphaScale",Range(0,1)) = 1
-        
-        [Header(BlendMode)]
-        [Enum(UnityEngine.Rendering.BlendMode)]_SrcFactor("SrcFactor",int) = 5
-        [Enum(UnityEngine.Rendering.BlendMode)]_DstFactor("DstFactor",int) = 10
-        
-        [Enum(UnityEngine.Rendering.CullMode)]_CullMode("CullMode" , int) =1
+        _Color("Color",Color) = (1,1,1,1)
+        _SpecularColor("SpecularColor",Color) = (1,1,1,1)
+        [PowerSlider(20)]_SpecularPower("SpecularPower",Range(8,255)) = 20
     }
     SubShader
     {
-        Tags {"RenderPipeline" = "UniversalPipeline" "RenderType"="Transparent" "Queue" = "Transparent"}
+        Tags {"RenderPipeline" = "UniversalPipeline" "RenderType"="Opaque" "Queue" = "Geometry"}
         LOD 100
 
         Pass
         {
             Tags{"LightMode" = "UniversalForward"}
-            ZWrite Off
-            Blend [_SrcFactor][_DstFactor]
-            Cull [_CullMode]
-            
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
-
+            
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
@@ -44,41 +34,52 @@ Shader "URP/ShaderBook/Chapter 8/AlphaBlendBothSided"
                 float2 uv           : TEXCOORD0;
                 float3 positionWS   : TEXCOORD1;
                 float3 normalWS     : TEXCOORD2;
+                float3 viewDirWS    : TEXCOORD3;
             };
 
-           TEXTURE2D(_BaseMap);SAMPLER(sampler_BaseMap);
-            
             CBUFFER_START(UnityPerMaterial)
                 float4 _Color;
-                float4 _BaseMap_ST;
-                float  _AlphaScale;
+                float4 _SpecularColor;
+                float  _SpecularPower;
             CBUFFER_END
 
             Varyings vert (Attributes v)
             {
-                Varyings o=(Varyings)0;
+                Varyings o = (Varyings)0;
                 o.positionHCS = TransformObjectToHClip(v.positionOS.xyz);
                 o.positionWS = TransformObjectToWorld(v.positionOS.xyz);
                 o.normalWS = TransformObjectToWorldNormal(v.normalOS);
-
-                o.uv = TRANSFORM_TEX(v.texcoord,_BaseMap);
+                o.viewDirWS = GetWorldSpaceViewDir(o.positionWS);
+                
                 return o;
             }
 
             half4 frag (Varyings i) : SV_Target
             {
                 half4 FinalColor;
+
                 Light light = GetMainLight();
                 half3 worldLightDir = light.direction;
                 half4 lightColor = half4(light.color * light.distanceAttenuation , 1.0);
 
                 half3 worldNormal = normalize(i.normalWS);
+                half3 worldViewDir = normalize(i.viewDirWS);
+                half3 halfDir = normalize(worldLightDir+worldViewDir);
 
-                half4 baseMap = SAMPLE_TEXTURE2D(_BaseMap,sampler_BaseMap,i.uv);
+                half3 diffuse = lightColor.rgb * _Color.rgb * max(0.0,dot(worldNormal,worldLightDir));
+                half3 specular = lightColor.rgb * _SpecularColor * pow(max(0.0,dot(worldNormal,halfDir)),_SpecularPower);
 
-                half4 diffuse = lightColor * _Color * baseMap * max(0.0,dot(worldLightDir,worldNormal) * 0.5 + 0.5);
-
-                FinalColor = diffuse;
+                //支持额外光源
+                int additionalLightCount = GetAdditionalLightsCount();  //获取额外光源数量
+                for(int j = 0;j<additionalLightCount;j++)
+                {
+                    light = GetAdditionalLight(j,i.positionWS);
+                    half3 attenuatedLightColor = light.color * light.distanceAttenuation;
+                    diffuse += LightingLambert(light.color,light.direction,worldNormal);
+                    specular += LightingSpecular(light.color,light.direction,worldNormal,worldViewDir,_SpecularColor,_SpecularPower);
+                }
+                
+                FinalColor = half4(diffuse + specular,1.0);
                 
                 return FinalColor;
             }
