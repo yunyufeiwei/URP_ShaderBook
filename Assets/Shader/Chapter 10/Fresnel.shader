@@ -1,4 +1,4 @@
-Shader "Unlit/Fresnel"
+Shader "URP/ShaderBook/Chapter 10/Fresnel"
 {
     Properties
     {

@@ -1,4 +1,4 @@
-Shader "URP/ShaderBook/Chapter 9/Refraction"
+Shader "URP/ShaderBook/Chapter 10/Refraction"
 {
     Properties
     {

@@ -1,4 +1,4 @@
-Shader "URP/ShaderBook/Chapter 9/Reflection"
+Shader "URP/ShaderBook/Chapter 10/Reflection"
 {
     Properties
     {
