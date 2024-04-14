@@ -67,7 +67,7 @@ Shader "URP/ShaderBook/Chapter 9/AdditionalLight"
                 half3 halfDir = normalize(worldLightDir+worldViewDir);
 
                 half3 diffuse = lightColor.rgb * _Color.rgb * max(0.0,dot(worldNormal,worldLightDir));
-                half3 specular = lightColor.rgb * _SpecularColor * pow(max(0.0,dot(worldNormal,halfDir)),_SpecularPower);
+                half3 specular = lightColor.rgb * _SpecularColor.rgb * pow(max(0.0,dot(worldNormal,halfDir)),_SpecularPower);
 
                 //支持额外光源
                 int additionalLightCount = GetAdditionalLightsCount();  //获取额外光源数量
