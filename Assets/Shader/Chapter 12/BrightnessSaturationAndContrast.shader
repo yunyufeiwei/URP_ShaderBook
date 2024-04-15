@@ -62,7 +62,7 @@ Shader "URP/ShaderBook/Chapter 12/BrightnessSaturationAndContrast"
                 FinalColor = half4(renderTex.rgb * _Brightness , 1.0);
 
                 //计算饱和度
-                half luminance = 0.125 * renderTex.r + 0.7154 * renderTex.g + 0.0721 * renderTex.b;
+                half luminance = 0.2125 * renderTex.r + 0.7154 * renderTex.g + 0.0721 * renderTex.b;
                 half3 luminanceColor = half3(luminance,luminance,luminance);
                 FinalColor = half4(lerp(luminanceColor,FinalColor.rgb,_Saturation),1.0);
 
