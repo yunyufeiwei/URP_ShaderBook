@@ -20,8 +20,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
   - {fileID: 11400000, guid: 18a107224af02a949b672d7c18130a06, type: 2}
   - {fileID: 11400000, guid: cc58b0f0716140e4cb8f7192ad94d47a, type: 2}
+  - {fileID: 11400000, guid: 44b8c9ebea438f3499d98840317a38af, type: 2}
+  - {fileID: 11400000, guid: 5c34f9539df1a6c43b6be73a4f17e4c3, type: 2}
+  - {fileID: 11400000, guid: e0c52438ade435c4085f77131f7db0a9, type: 2}
+  - {fileID: 11400000, guid: 7086b6e5baa0c8946b5b5fc3e72fcfe9, type: 2}
+  - {fileID: 11400000, guid: 30282aa4d8b9d7e4d8e6200480070465, type: 2}
+  - {fileID: 11400000, guid: d7ecd8d179ba5354f9a4cd31c19a6567, type: 2}
   m_DefaultRendererIndex: 0
-  m_RequireDepthTexture: 0
+  m_RequireDepthTexture: 1
   m_RequireOpaqueTexture: 1
   m_OpaqueDownsampling: 1
   m_SupportsTerrainHoles: 1
