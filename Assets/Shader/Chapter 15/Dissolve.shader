@@ -1,4 +1,4 @@
-Shader "URP/Chapter 15/Dissolve"
+Shader "URP/ShaderBook/Chapter 15/Dissolve"
 {
     Properties
     {
