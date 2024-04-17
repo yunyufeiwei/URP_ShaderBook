@@ -1,4 +1,4 @@
-Shader "URP/Chapter 14/Hatching"
+Shader "URP/ShaderBook/Chapter 14/Hatching"
 {
     Properties
     {

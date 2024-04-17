@@ -5,8 +5,8 @@ Shader "URP/ShaderBook/Chapter 15/Dissolve"
         _MainTex ("Texture", 2D) = "white" {}
         _BumpMap("Bump Map",2D) = "white"{}
         _BurnMap("Burn Map",2D) = "white"{}
-        _BurnAmount("BurnAmount",Range(0,1)) = 0.0
-        _LineWidth("BurnLineWidth",Range(0,1)) = 0.1
+        _BurnAmount("BurnAmount",Range(0,1)) = 0.0          //定义消融程度
+        _LineWidth("BurnLineWidth",Range(0,1)) = 0.1        //定义消融边缘的宽度，值越大，边缘的蔓延范围越广
         [HDR]_BurnFirstColor("BurnFirstColor",Color) = (1,0,0,01)
         [HDR]_BurnSecondColor("BurnSecondColor",Color) = (1,0,0,1)
     }

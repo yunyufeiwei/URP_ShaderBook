@@ -64,6 +64,9 @@ Shader "URP/ShaderBook/Chapter 11/ImageSequenceAnimation"
                 float row = floor(time / _HorizontalAmount);
                 float column = time -row * _VerticalAmount;
 
+                // half2 uv=float2(i.uv.x/_HorizontalAmount,i.uv.y/_VerticalAmount);
+                // uv.x +=column/_HorizontalAmount;
+                // uv.y-=row/_VerticalAmount;
                 //通过向下取整之后重新构建采样的uv
                 half2 uv = i.uv + half2(column,-row);
                 uv.x /= _HorizontalAmount;

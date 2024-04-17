@@ -1,4 +1,4 @@
-﻿Shader "URP/Common/Bumped Specular" 
+﻿Shader "URP/ShaderBook/Common/Bumped Specular" 
 {
 	Properties 
 	{

@@ -35,6 +35,7 @@ Shader "URP/ShaderBook/Chapter 15/FogWithNoise"
         };
 
         TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
+        //在URP 管线下勾选Depth Texture选项，系统会在commandBuffer中生成一张_CameraDepthTexture的贴图
         TEXTURE2D(_CameraDepthTexture); SAMPLER(sampler_CameraDepthTexture);
         TEXTURE2D(_NosieTex); SAMPLER(sampler_NosieTex);
         CBUFFER_START(UnityPerMaterial)

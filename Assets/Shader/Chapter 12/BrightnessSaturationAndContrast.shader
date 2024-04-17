@@ -2,6 +2,7 @@ Shader "URP/ShaderBook/Chapter 12/BrightnessSaturationAndContrast"
 {
     Properties
     {
+        //后处理shader的主纹理必须使用_MainTex
         _MainTex ("Texture", 2D) = "white" {}
         
         _Brightness("Brightness",float) = 1
@@ -55,7 +56,7 @@ Shader "URP/ShaderBook/Chapter 12/BrightnessSaturationAndContrast"
             half4 frag (Varyings i) : SV_Target
             {
                 half4 FinalColor;
-                //采样贴图
+                //得到从camera屏幕图像，在shader中采样后计算
                 half4 renderTex = SAMPLE_TEXTURE2D(_MainTex,sampler_MainTex,i.uv);
 
                 //计算亮度

@@ -1,4 +1,4 @@
-Shader "URP/Chapter 13/FogWithDepthTexture"
+Shader "URP/ShaderBook/Chapter 13/FogWithDepthTexture"
 {
     Properties
     {
@@ -31,6 +31,7 @@ Shader "URP/Chapter 13/FogWithDepthTexture"
         };
 
         TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
+        //在URP 管线下勾选Depth Texture选项，系统会在commandBuffer中生成一张_CameraDepthTexture的贴图
         TEXTURE2D(_CameraDepthTexture); SAMPLER(sampler_CameraDepthTexture);
         CBUFFER_START(UnityPerMaterial)
             float4x4 _FrustumCornersRay;

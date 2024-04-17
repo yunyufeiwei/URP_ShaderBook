@@ -1,4 +1,4 @@
-Shader "URP/Chapter 14/ToonShading"
+Shader "URP/ShaderBook/Chapter 14/ToonShading"
 {
     Properties
     {

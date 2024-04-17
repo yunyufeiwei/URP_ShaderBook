@@ -54,6 +54,7 @@ Shader "URP/ShaderBook/Chapter 10/Refraction"
                 o.positionWS = TransformObjectToWorld(v.positionOS.xyz);
                 o.normalWS = TransformObjectToWorldNormal(v.normalOS);
                 o.viewDirWS = GetWorldSpaceViewDir(o.positionWS);
+                //使用CG函数refract函数来计算折射方向，第一个参数为入射光线的方向（它必须是归一化的），第二个参数是表面法线（它必须是归一化的），第三个参数是入射光线所在介质和这是光线所在介质的折射率之间的比值
                 o.worldRef1 = refract(-normalize(o.viewDirWS) , normalize(o.normalWS) , _RefractRatio);
                 return o;
             }

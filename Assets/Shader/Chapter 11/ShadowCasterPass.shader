@@ -77,6 +77,9 @@ Shader "URP/ShaderBook/Chapter 11/ShadowCasterPass"
             }
             ENDHLSL
         }
+        
+        //自定义阴影部分
+        //URP下的阴影需要添加额外的Pass，将其阴影的lightMode设置为{"LightMode" = "ShadowCaster"
         Pass
         {
             Name "ShadowCaster"

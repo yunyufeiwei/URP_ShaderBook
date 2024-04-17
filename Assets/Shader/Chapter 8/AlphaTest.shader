@@ -72,6 +72,11 @@ Shader "URP/ShaderBook/Chapter 8/AlphaTest"
 
                 //Alpha测试
                 clip(baseMap.a - _Cutoff);
+                //等价于
+                // if((baseMap.a - _Cutoff) < 0)
+                // {
+                //     discard;
+                // }
 
                 FinalColor = diffuse;
                 

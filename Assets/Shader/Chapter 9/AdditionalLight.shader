@@ -13,6 +13,7 @@ Shader "URP/ShaderBook/Chapter 9/AdditionalLight"
 
         Pass
         {
+            //URP下的额外光源计算与光照模型已经与Built-In完全不同，因此额外光源不在使用两个pass来实现
             Tags{"LightMode" = "UniversalForward"}
             HLSLPROGRAM
             #pragma vertex vert
@@ -73,7 +74,7 @@ Shader "URP/ShaderBook/Chapter 9/AdditionalLight"
                 int additionalLightCount = GetAdditionalLightsCount();  //获取额外光源数量
                 for(int j = 0;j<additionalLightCount;j++)
                 {
-                    light = GetAdditionalLight(j,i.positionWS);
+                    light = GetAdditionalLight(j,i.positionWS); //根据Index获取额外的光源数据
                     half3 attenuatedLightColor = light.color * light.distanceAttenuation;
                     diffuse += LightingLambert(light.color,light.direction,worldNormal);
                     specular += LightingSpecular(light.color,light.direction,worldNormal,worldViewDir,_SpecularColor,_SpecularPower);

@@ -1,4 +1,4 @@
-Shader "URP/Chapter 13/MotionBlurWithDepthTexture"
+Shader "URP/ShaderBook/Chapter 13/MotionBlurWithDepthTexture"
 {
     Properties
     {

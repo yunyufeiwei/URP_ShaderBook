@@ -55,6 +55,7 @@ Shader "URP/ShaderBook/Chapter 12/Bloom"
         
         float luminance(in float3 color)
         {
+            //根据人眼对颜色的敏感度，可以看见对绿色是最敏感的
             return  0.2125 * color.r + 0.7154 * color.g + 0.0721 * color.b; 
         }
 

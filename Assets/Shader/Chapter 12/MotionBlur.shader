@@ -59,7 +59,10 @@ Shader "URP/ShaderBook/Chapter 12/MotionBlur"
         {
             NAME"Pass01"
             Blend SrcAlpha OneMinusSrcAlpha
+            //颜色遮罩，即保留RGB通道,屏蔽alpha，即src的alpha = 0，这样可以得到上一帧单纯的虚化图，而不是颜色混合图。ColorMask 0 即只保留深度信息
+            //DstColornew=SrcAlpha(=0) ×SrcColor+(1-SrcAlpha (= _BlurAmount))×DstColorold
             ColorMask RGB
+            
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment fragRGB
@@ -70,7 +73,9 @@ Shader "URP/ShaderBook/Chapter 12/MotionBlur"
         {
             NAME"Pass02"
             Blend One Zero
+            // Csrc * 1+Cdst * 0，也就是说完全使用当前新绘制的Color,即src的A等于原始值，rgb都为0，而dst则相反。所以无论有没有上面一行代码效果呈现是一样的。
             ColorMask A
+            
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment fragA

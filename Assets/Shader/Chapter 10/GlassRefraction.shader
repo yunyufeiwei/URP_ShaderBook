@@ -5,11 +5,12 @@ Shader "URP/ShaderBook/Chapter 10/GlassRefraction"
         _BaseMap("BaseMap",2D) = "white"{}
         _BumpMap("BumpMap",2D) = "bump"{}
         _CubeMap("CubeMap" ,Cube) = "_Skybox"{}
-        _Distortion("Distortion",Range(0,100)) = 10
-        _RefractAmount("RefractAmount",Range(0,1)) = 1
+        _Distortion("Distortion",Range(0,100)) = 10     //控制模拟这是时图像的扭曲程度
+        _RefractAmount("RefractAmount",Range(0,1)) = 1  //控制折射程度，当为0时，该玻璃只包含反射，当为1时，该玻璃只包含折射
     }
     SubShader
     {
+        //将渲染队列设置为透明，这样其他的不透明物体都会在这个之前被渲染到屏幕上
         Tags {"RenderPipeline" = "UniversalPipeline" "RenderType"="Opaque" "Queue" = "Transparent"}
         LOD 100
 
@@ -69,6 +70,7 @@ Shader "URP/ShaderBook/Chapter 10/GlassRefraction"
 
                 o.viewDirWS = GetWorldSpaceViewDir(positionWS);
 
+                //将计算结果按列摆放得到从切线空间到世界空间的变换矩阵，将该矩阵的每一行分别存储在TtoW0、TtoW1、TtoW2中，并将世界空间下的顶点位置分别存储在了变量的W分量中
                 o.TtoW0 = float4(worldTangent.x,worldBitangent.x,worldNormal.x ,positionWS.x);
                 o.TtoW1 = float4(worldTangent.y,worldBitangent.y,worldNormal.y,positionWS.y);
                 o.TtoW2 = float4(worldTangent.z,worldBitangent.z,worldNormal.z,positionWS.z);

@@ -1,4 +1,4 @@
-﻿Shader "URP/Common/Bumped Diffuse" 
+﻿Shader "URP/ShaderBook/Common/Bumped Diffuse" 
 {
 	Properties
     {

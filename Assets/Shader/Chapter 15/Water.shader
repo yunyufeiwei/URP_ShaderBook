@@ -16,6 +16,8 @@ Shader "URP/ShaderBook/Chapter 15/Water"
     {
         Tags { "RenderPipeline" = "UniversalPipeline" "RenderType" = "Transparent" "Queue" = "Transparent"}
         LOD 100
+        
+        //GrabPass { "_RefractionTex" }  //通过关键字GrabPass定义了一个抓取屏幕图像的Pass，在这个pass中我们定义了一个字符串，该字符串内的名称决定了抓取得到的屏幕图像将会背存入哪个纹理
 
         Pass
         {
@@ -66,8 +68,9 @@ Shader "URP/ShaderBook/Chapter 15/Water"
                 //通过内置的方法，将模型本地位置数据传入，输出模型顶点的世界空间、视图空间、裁剪空间以及NDC空间位置
                 VertexPositionInputs positionInputs = GetVertexPositionInputs(v.positionOS.xyz);
                 o.positionHCS = positionInputs.positionCS;
-
+                //通过传入模型空间下的法线和切线数据，使用内置方法计算输出世界空间下的法线、切线、付切线向量
                 VertexNormalInputs normalInput = GetVertexNormalInputs(v.normalOS,v.tangentOS);
+                //在进行必要的顶点坐标变换后，通过调用ComputeGrabScreenPos来得到对应被抓取屏幕图像的采样坐标
                 o.scrPos = positionInputs.positionNDC;
 
                 //构建TBN

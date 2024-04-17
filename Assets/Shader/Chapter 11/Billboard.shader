@@ -8,11 +8,13 @@ Shader "URP/ShaderBook/Chapter 11/Billboard"
     }
     SubShader
     {
-        Tags { "RenderPipeline" = "UniversalPipeline" "RenderType"="Transparent" "Queue" = "Transparent"}
+        //设置渲染队列/渲染类型/忽略投射阴影/使用批处理
+        Tags { "RenderPipeline" = "UniversalPipeline" "RenderType"="Transparent" "Queue" = "Transparent" "IgnoreProjector"="True" "DisableBatching"="True"}
         LOD 100
 
         Pass
         {
+            //pass下面单独使用一个Tags，在光照模型只在该pass下生效
             Tags{"LightMode" = "UniversalForward"}
             ZWrite Off
             Blend SrcAlpha OneMinusSrcAlpha
