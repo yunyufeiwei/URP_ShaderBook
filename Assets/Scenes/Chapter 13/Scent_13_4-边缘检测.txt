@@ -1,0 +1,10 @@
+//当前的边缘检测需要用到深度和法线的buffer，但在URP下，默认是无法取到法线的buffer
+
+//需要额外添加法线的buffer信息。
+//参考资料
+//https://blog.csdn.net/qq_41835314/article/details/130151062
+//https://www.bilibili.com/read/cv6672641/?spm_id_from=333.999.0.0
+//https://www.jianshu.com/p/6c75bb64e8a0
+//https://zhuanlan.zhihu.com/p/648793922?utm_id=0
+
+//https://ameye.dev/notes/edge-detection-outlines/

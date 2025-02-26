@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2901080768730411774
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 265d11e2088c95445800a2e0ab5c18ae, type: 3}
+  m_Name: FogWithNoiseVolume
+  m_EditorClassIdentifier: 
+  active: 1
+  FogDensity:
+    m_OverrideState: 1
+    m_Value: 1
+  FogColor:
+    m_OverrideState: 1
+    m_Value: {r: 0.7058824, g: 0.7019608, b: 0.69411767, a: 1}
+  FogStart:
+    m_OverrideState: 1
+    m_Value: -1.5
+  FogEnd:
+    m_OverrideState: 1
+    m_Value: 3
+  FogXSpeed:
+    m_OverrideState: 1
+    m_Value: -0.05
+  FogYSpeed:
+    m_OverrideState: 1
+    m_Value: 0.05
+  NoiseAmount:
+    m_OverrideState: 1
+    m_Value: 1.04
+  NoiseTex:
+    m_OverrideState: 1
+    m_Value: {fileID: 2800000, guid: 772c2811419601849a7016c91d4e27bf, type: 3}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Postprocess_15_3
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: -2901080768730411774}
